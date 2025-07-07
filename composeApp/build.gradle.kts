@@ -16,7 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -25,11 +25,18 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            // Decompose
+            export(libs.decompose)
+            export(libs.decompose.extensions)
+            export(libs.essenty.lifecycle)
+            export(libs.essenty.statekeeper)
+            // Decompose
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -43,9 +50,26 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+
+            // Decompose
+            implementation(libs.decompose)
+            implementation(libs.decompose.extensions)
+            // Decompose
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        iosMain.dependencies {
+            // Decompose
+            api(libs.decompose)
+            api(libs.decompose.extensions)
+            api(libs.essenty.lifecycle)
+            api(libs.essenty.statekeeper)
+            // Decompose
         }
     }
 }
@@ -80,4 +104,3 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
 }
-
