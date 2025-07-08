@@ -1,6 +1,7 @@
 package com.steeplesoft.giftbook
 
 import com.arkivanov.decompose.ComponentContext
+import com.steeplesoft.giftbook.logger.AppLogger
 
 class GreeterComponent(
     componentContext: ComponentContext
@@ -8,6 +9,7 @@ class GreeterComponent(
     private val platform = getPlatform()
 
     fun greet(): String {
+        AppLogger.i("Hello, ${platform.name}!")
         return "Hello, ${platform.name}!"
     }
 }
