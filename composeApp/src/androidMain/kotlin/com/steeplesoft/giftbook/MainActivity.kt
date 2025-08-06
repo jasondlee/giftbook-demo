@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // Always create the root component outside Compose on the main thread
-        val rootComponent = GreeterComponent(defaultComponentContext())
+        val rootComponent = RootComponent(defaultComponentContext())
 
         setContent {
             App(rootComponent)

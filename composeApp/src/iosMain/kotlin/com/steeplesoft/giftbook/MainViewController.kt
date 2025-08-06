@@ -7,7 +7,7 @@ import com.arkivanov.essenty.lifecycle.ApplicationLifecycle
 
 fun MainViewController() = ComposeUIViewController {
     val rootComponent = remember {
-        GreeterComponent(DefaultComponentContext(ApplicationLifecycle()))
+        RootComponent(DefaultComponentContext(ApplicationLifecycle()))
     }
     App(rootComponent)
 }
