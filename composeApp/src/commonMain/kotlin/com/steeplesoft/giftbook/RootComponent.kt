@@ -25,6 +25,7 @@ class RootComponent(componentContext: ComponentContext) :
                       componentContext: ComponentContext): ComponentContext {
         return when (config) {
             is NavigationConfig.Home -> GreeterComponent(componentContext)
+            is NavigationConfig.Dummy -> DummyComponent(componentContext)
         }
     }
 }

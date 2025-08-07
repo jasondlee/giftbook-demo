@@ -41,5 +41,9 @@ fun greeter(
                 Text("Compose: $greeting")
             }
         }
+
+        Button(onClick = { component.dummy() }) {
+            Text("Dummy")
+        }
     }
 }

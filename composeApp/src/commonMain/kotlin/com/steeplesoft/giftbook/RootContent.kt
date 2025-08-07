@@ -24,6 +24,7 @@ fun RootContent(
             val childModifier = modifier.fillMaxWidth().padding(10.dp)
             when (val component = it.instance) {
                 is GreeterComponent -> greeter(component, childModifier)
+                is DummyComponent -> dummy(component, childModifier)
             }
         }
     }

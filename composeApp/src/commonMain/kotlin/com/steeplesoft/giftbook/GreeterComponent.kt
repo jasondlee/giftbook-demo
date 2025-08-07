@@ -1,6 +1,7 @@
 package com.steeplesoft.giftbook
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.steeplesoft.giftbook.logger.AppLogger
 
 class GreeterComponent(
@@ -11,5 +12,9 @@ class GreeterComponent(
     fun greet(): String {
         AppLogger.i("Hello, ${platform.name}!")
         return "Hello, ${platform.name}!"
+    }
+
+    fun dummy() {
+        nav.pushToFront(NavigationConfig.Dummy)
     }
 }

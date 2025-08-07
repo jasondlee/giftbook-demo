@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed interface NavigationConfig {
-//    @Serializable
-//    data class Foo(val bar: String? = null) : NavigationConfig
+    @Serializable
+    data object Home : NavigationConfig
 
     @Serializable
-    data class Home() : NavigationConfig
+    data object Dummy : NavigationConfig
 }
