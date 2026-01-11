@@ -1,4 +1,4 @@
-package com.steeplesoft.giftbook
+package com.steeplesoft.giftbook.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

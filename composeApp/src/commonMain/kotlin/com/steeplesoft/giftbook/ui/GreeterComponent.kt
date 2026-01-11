@@ -1,7 +1,9 @@
-package com.steeplesoft.giftbook
+package com.steeplesoft.giftbook.ui
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.pushToFront
+import com.steeplesoft.giftbook.NavigationConfig
+import com.steeplesoft.giftbook.getPlatform
 import com.steeplesoft.giftbook.logger.AppLogger
 
 class GreeterComponent(

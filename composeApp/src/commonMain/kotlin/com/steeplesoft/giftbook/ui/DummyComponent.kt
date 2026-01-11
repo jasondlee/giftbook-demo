@@ -1,6 +1,7 @@
-package com.steeplesoft.giftbook
+package com.steeplesoft.giftbook.ui
 
 import com.arkivanov.decompose.ComponentContext
+import com.steeplesoft.giftbook.getPlatform
 
 class DummyComponent(componentContext: ComponentContext
 ) : ComponentContext by componentContext {

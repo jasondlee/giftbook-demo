@@ -1,4 +1,4 @@
-package com.steeplesoft.giftbook
+package com.steeplesoft.giftbook.ui
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
