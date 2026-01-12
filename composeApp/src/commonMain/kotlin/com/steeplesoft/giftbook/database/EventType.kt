@@ -1,12 +1,12 @@
 package com.steeplesoft.giftbook.database
 
-import giftbook.composeapp.generated.resources.Res
-import giftbook.composeapp.generated.resources.anniversary
-import giftbook.composeapp.generated.resources.cake
-import giftbook.composeapp.generated.resources.gift
-import giftbook.composeapp.generated.resources.graduation
-import giftbook.composeapp.generated.resources.tree
-import giftbook.composeapp.generated.resources.valentines
+import giftbook_demo.composeapp.generated.resources.Res
+import giftbook_demo.composeapp.generated.resources.anniversary
+import giftbook_demo.composeapp.generated.resources.cake
+import giftbook_demo.composeapp.generated.resources.gift
+import giftbook_demo.composeapp.generated.resources.graduation
+import giftbook_demo.composeapp.generated.resources.tree
+import giftbook_demo.composeapp.generated.resources.valentines
 import org.jetbrains.compose.resources.DrawableResource
 
 enum class EventType(

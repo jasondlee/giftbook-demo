@@ -1,9 +1,12 @@
-package com.steeplesoft.giftbook.database
+package com.steeplesoft.giftbook.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.steeplesoft.giftbook.database.EventType
+import com.steeplesoft.giftbook.database.EventTypeConverter
+import com.steeplesoft.giftbook.database.LocalDateConverter
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
@@ -16,9 +19,9 @@ data class Occasion (
     @ColumnInfo(name = "name")
     var name: String,
     @field:TypeConverters(LocalDateConverter::class)
-    @ColumnInfo(name="eventDate", typeAffinity = ColumnInfo.TEXT)
+    @ColumnInfo(name="eventDate", typeAffinity = ColumnInfo.Companion.TEXT)
     var eventDate: LocalDate,
     @field:TypeConverters(EventTypeConverter::class)
-    @ColumnInfo(name="eventType", typeAffinity = ColumnInfo.INTEGER)
+    @ColumnInfo(name="eventType", typeAffinity = ColumnInfo.Companion.INTEGER)
     var eventType: EventType = EventType.OTHER
 )
