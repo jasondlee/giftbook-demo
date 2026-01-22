@@ -66,6 +66,9 @@ kotlin {
             implementation(libs.sqlite.bundled)
             // Room
 
+            // Camper
+            implementation(libs.camper)
+            // Camper
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

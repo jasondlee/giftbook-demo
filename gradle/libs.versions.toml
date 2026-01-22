@@ -5,6 +5,7 @@ android-minSdk = "24"
 android-targetSdk = "35"
 androidx-activity = "1.10.1"
 androidx-lifecycle = "2.9.1"
+camper = "0.3.2"
 composeMultiplatform = "1.8.2"
 kotlin = "2.2.10"
 kotlinxDatetime = "0.7.1"
@@ -27,6 +28,7 @@ decompose-extensions = { module = "com.arkivanov.decompose:extensions-compose", 
 essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 essenty-statekeeper = { module = "com.arkivanov.essenty:state-keeper", version.ref = "essenty" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+camper = { module = "com.steeplesoft:camper", version.ref = "camper" }
 
 # Room
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
