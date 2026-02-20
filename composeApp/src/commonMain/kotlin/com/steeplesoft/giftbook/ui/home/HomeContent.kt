@@ -38,32 +38,34 @@ fun Home(
         val occasions by component.occasions.subscribeAsState()
         val current: Occasion? by remember { mutableStateOf(component.occasion) }
 
-        ComboBox(
-            label = "Current Occasion",
-            selected = current,
-            onChange = { newValue ->
-                component.onOccasionChange(newValue!!)
-            },
-            items = occasions,
-            itemLabel = { item -> item?.name ?: "--" }
-        )
+        Column {
+            ComboBox(
+                label = "Current Occasion",
+                selected = current,
+                onChange = { newValue ->
+                    component.onOccasionChange(newValue!!)
+                },
+                items = occasions,
+                itemLabel = { item -> item?.name ?: "--" }
+            )
 
-        LazyColumn(
-            modifier = Modifier.testTag("recipientList")
-        ) {
-            items(occasionProgress) {
-                ElevatedCard(
-                    elevation = CardDefaults.cardElevation(
-                        defaultElevation = 6.dp
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 10.dp)
-                ) {
-                    Column(
-                        modifier = Modifier.padding(15.dp)
+            LazyColumn(
+                modifier = Modifier.testTag("recipientList")
+            ) {
+                items(occasionProgress) {
+                    ElevatedCard(
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 6.dp
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 10.dp)
                     ) {
-                        Text(it.recipient.name, fontSize = 18.sp)
+                        Column(
+                            modifier = Modifier.padding(15.dp)
+                        ) {
+                            Text(it.recipient.name, fontSize = 18.sp)
+                        }
                     }
                 }
             }

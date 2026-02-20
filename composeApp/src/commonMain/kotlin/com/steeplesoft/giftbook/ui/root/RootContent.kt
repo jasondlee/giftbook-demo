@@ -16,6 +16,7 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.router.stack.pushToFront
+import com.steeplesoft.giftbook.ui.drawer.BottomNavBar
 import com.steeplesoft.giftbook.ui.home.Home
 import com.steeplesoft.giftbook.ui.home.HomeComponent
 import com.steeplesoft.giftbook.ui.occasionRecip.AddEditOccasionRecipient
@@ -34,7 +35,7 @@ fun RootContent(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
@@ -44,7 +45,14 @@ fun RootContent(
                     )
                 }
             )
-        }
+        },
+        bottomBar = {
+            BottomNavBar(onNavigate = { navItem ->
+                {
+                    nav.pushToFront(navItem.route)
+                }
+            })
+        },
     ) { innerPadding ->
         Children(
             stack = component.stack,

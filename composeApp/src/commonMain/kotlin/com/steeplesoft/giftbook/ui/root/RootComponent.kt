@@ -24,7 +24,7 @@ class RootComponent(componentContext: ComponentContext) :
     val stack: Value<ChildStack<*, ComponentContext>> = childStack(
         source = nav,
         serializer = NavigationConfig.serializer(),
-        initialConfiguration = NavigationConfig.Home,
+        initialConfiguration = NavigationConfig.Home(),
         handleBackButton = true,
         childFactory = ::child,
     )
@@ -34,6 +34,9 @@ class RootComponent(componentContext: ComponentContext) :
         return when (config) {
             is NavigationConfig.Home -> HomeComponent(componentContext)
             is NavigationConfig.AddEditOccasionRecipient -> AddEditOccasionRecipientComponent(componentContext, config.occasion, config.recipient, config.occasionRecip)
+            else -> {
+                TODO()
+            }
         }
     }
 }
