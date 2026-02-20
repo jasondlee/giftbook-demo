@@ -1,13 +1,16 @@
 package com.steeplesoft.giftbook.ui.home
 
 import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.update
 import com.arkivanov.essenty.lifecycle.doOnResume
+import com.steeplesoft.camper.components.Status
+import com.steeplesoft.giftbook.NavigationConfig
 import com.steeplesoft.giftbook.database.db
 import com.steeplesoft.giftbook.model.Occasion
 import com.steeplesoft.giftbook.model.OccasionProgress
-import com.steeplesoft.giftbook.ui.general.Status
+import com.steeplesoft.giftbook.ui.root.nav
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -65,6 +68,11 @@ class HomeComponent(
             }
 
             occasionProgress.update { list }
+        }
+    }
+    fun addRecipient() {
+        occasion?.let {
+            nav.bringToFront(NavigationConfig.AddEditOccasionRecipient(it))
         }
     }
 }

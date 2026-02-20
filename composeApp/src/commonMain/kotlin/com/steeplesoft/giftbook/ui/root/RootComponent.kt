@@ -10,6 +10,7 @@ import com.steeplesoft.giftbook.database.db
 import com.steeplesoft.giftbook.logger.AppLogger
 import com.steeplesoft.giftbook.ui.home.Home
 import com.steeplesoft.giftbook.ui.home.HomeComponent
+import com.steeplesoft.giftbook.ui.occasionRecip.AddEditOccasionRecipientComponent
 
 val nav = StackNavigation<NavigationConfig>()
 
@@ -32,6 +33,7 @@ class RootComponent(componentContext: ComponentContext) :
                       componentContext: ComponentContext): ComponentContext {
         return when (config) {
             is NavigationConfig.Home -> HomeComponent(componentContext)
+            is NavigationConfig.AddEditOccasionRecipient -> AddEditOccasionRecipientComponent(componentContext, config.occasion, config.recipient, config.occasionRecip)
         }
     }
 }

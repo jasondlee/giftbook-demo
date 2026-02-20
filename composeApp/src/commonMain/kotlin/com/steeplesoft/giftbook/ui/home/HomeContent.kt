@@ -1,6 +1,6 @@
 package com.steeplesoft.giftbook.ui.home
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,9 +18,13 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.bringToFront
+import com.steeplesoft.camper.components.AsyncLoad
+import com.steeplesoft.camper.components.ComboBox
+import com.steeplesoft.giftbook.NavigationConfig
 import com.steeplesoft.giftbook.model.Occasion
-import com.steeplesoft.giftbook.ui.general.AsyncLoad
-import com.steeplesoft.giftbook.ui.general.ComboBox
+import com.steeplesoft.giftbook.ui.general.ActionButton
 
 @Composable
 fun Home(
@@ -30,36 +34,46 @@ fun Home(
     val status by component.requestStatus.subscribeAsState()
     val occasionProgress by component.occasionProgress.subscribeAsState()
 
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        AsyncLoad(status) {
-            val occasions by component.occasions.subscribeAsState()
-            val current: Occasion? by remember { mutableStateOf(component.occasion) }
+    AsyncLoad(status) {
+        val occasions by component.occasions.subscribeAsState()
+        val current: Occasion? by remember { mutableStateOf(component.occasion) }
 
-            ComboBox(
-                label = "Current Occasion",
-                selected = current,
-                onChange = { newValue ->
-                    component.onOccasionChange(newValue!!)
-                },
-                items = occasions,
-                itemLabel = { item -> item?.name ?: "--" }
-            )
+        ComboBox(
+            label = "Current Occasion",
+            selected = current,
+            onChange = { newValue ->
+                component.onOccasionChange(newValue!!)
+            },
+            items = occasions,
+            itemLabel = { item -> item?.name ?: "--" }
+        )
 
-            LazyColumn(modifier = Modifier.testTag("recipientList")) {
-                items(occasionProgress) {
-                    ElevatedCard(
-                        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
-                        modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp)
+        LazyColumn(
+            modifier = Modifier.testTag("recipientList")
+        ) {
+            items(occasionProgress) {
+                ElevatedCard(
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 6.dp
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 10.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.padding(15.dp)
                     ) {
-                        Column(modifier = Modifier.padding(15.dp)) {
-                            Text(it.recipient.name, fontSize = 18.sp)
-                        }
+                        Text(it.recipient.name, fontSize = 18.sp)
                     }
                 }
             }
         }
+
+        ActionButton(
+            onClick = {
+                component.addRecipient()
+            }
+        )
     }
 }
+

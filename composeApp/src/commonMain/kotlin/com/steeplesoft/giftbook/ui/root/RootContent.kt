@@ -15,8 +15,11 @@ import androidx.compose.ui.unit.dp
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
+import com.arkivanov.decompose.router.stack.pushToFront
 import com.steeplesoft.giftbook.ui.home.Home
 import com.steeplesoft.giftbook.ui.home.HomeComponent
+import com.steeplesoft.giftbook.ui.occasionRecip.AddEditOccasionRecipient
+import com.steeplesoft.giftbook.ui.occasionRecip.AddEditOccasionRecipientComponent
 import giftbook_demo.composeapp.generated.resources.Res
 import giftbook_demo.composeapp.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
@@ -51,6 +54,7 @@ fun RootContent(
             val childModifier = modifier.fillMaxWidth().padding(10.dp)
             when (val component = it.instance) {
                 is HomeComponent -> Home(component, childModifier)
+                is AddEditOccasionRecipientComponent -> AddEditOccasionRecipient(component, childModifier)
             }
         }
     }
