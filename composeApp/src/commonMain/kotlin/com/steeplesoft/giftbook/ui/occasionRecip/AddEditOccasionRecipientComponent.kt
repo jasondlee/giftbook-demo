@@ -8,7 +8,6 @@ import com.arkivanov.essenty.lifecycle.doOnResume
 import com.steeplesoft.camper.components.Status
 import com.steeplesoft.giftbook.database.dao.OccasionDao
 import com.steeplesoft.giftbook.database.dao.RecipientDao
-import com.steeplesoft.giftbook.database.db
 import com.steeplesoft.giftbook.database.form.OccasionRecipForm
 import com.steeplesoft.giftbook.model.Occasion
 import com.steeplesoft.giftbook.model.OccasionRecipient
@@ -18,15 +17,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import kotlin.getValue
 
 class AddEditOccasionRecipientComponent(
     val componentContext: ComponentContext,
     val occasion: Occasion,
     var recipient: Recipient? = null,
     var occasionRecipient: OccasionRecipient? = null
-) : ComponentContext by componentContext {
-    private val occasionDao: OccasionDao = db.occasionDao()
-    private val recipientDao: RecipientDao = db.recipientDao()
+) : ComponentContext by componentContext, KoinComponent {
+    private val occasionDao: OccasionDao by inject()
+    private val recipientDao: RecipientDao by inject()
 
     var form = OccasionRecipForm(occasionRecipient)
     var requestStatus: MutableValue<Status> = MutableValue(Status.LOADING)

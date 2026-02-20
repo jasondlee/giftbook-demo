@@ -9,6 +9,7 @@ camper = "0.3.2"
 composeMultiplatform = "1.10.1"
 decompose = "3.4.0"
 essenty = "2.5.0"
+koin = "4.2.0-RC1"
 kotlin = "2.3.10"
 kotlinxDatetime = "0.7.1"
 
@@ -35,6 +36,11 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 # Room
+
+# Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose" }
+# Koin
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

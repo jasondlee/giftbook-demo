@@ -6,20 +6,14 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
 import com.steeplesoft.giftbook.NavigationConfig
-import com.steeplesoft.giftbook.database.db
-import com.steeplesoft.giftbook.logger.AppLogger
-import com.steeplesoft.giftbook.ui.home.Home
 import com.steeplesoft.giftbook.ui.home.HomeComponent
 import com.steeplesoft.giftbook.ui.occasionRecip.AddEditOccasionRecipientComponent
-
-val nav = StackNavigation<NavigationConfig>()
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class RootComponent(componentContext: ComponentContext) :
-    ComponentContext by componentContext {
-    init {
-        val dao = db.occasionDao()
-        AppLogger.i("The dao is $dao")
-    }
+    ComponentContext by componentContext, KoinComponent {
+    private val nav : StackNavigation<NavigationConfig> by inject()
 
     val stack: Value<ChildStack<*, ComponentContext>> = childStack(
         source = nav,

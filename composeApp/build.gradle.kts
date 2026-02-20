@@ -69,6 +69,11 @@ kotlin {
             // Camper
             implementation(libs.camper)
             // Camper
+
+            // Koin
+            implementation(project.dependencies.platform(libs.koin.bom))
+            implementation(libs.koin.compose)  // No version needed
+            // Koin
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
